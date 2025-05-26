@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8" />
+<title>ใส่รหัสผ่าน</title>
+<style>
+  body {
+    background-color: #121212;
+    color: #eee;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .container {
+    background: #1e1e1e;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(255, 20, 147, 0.6);
+    text-align: center;
+    width: 360px;
+  }
+  p.hint {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #ff4081;
+    text-shadow: 0 0 8px #ff4081;
+    white-space: pre-wrap;
+  }
+  input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    background-color: #2a2a2a;
+    color: #eee;
+    box-shadow: inset 0 0 8px #ff4081;
+    outline: none;
+    transition: box-shadow 0.3s ease, color 0.3s ease;
+  }
+  input[type="password"]:focus {
+    box-shadow: inset 0 0 15px #ff79b0;
+  }
+  input[type="password"].error {
+    color: #f44336;
+    box-shadow: inset 0 0 15px #f44336;
+  }
+  button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background-color: #ff4081;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px #ff4081;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+  }
+  button:hover {
+    background-color: #e73370;
+    box-shadow: 0 6px 20px #ff6ea1;
+  }
+  #result {
+    margin-top: 25px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    white-space: nowrap;
+    font-family: monospace;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <p class="hint">−−−·· / ···−− / −−−· · / ···−− / ··−−− / −−−· · / −−−−· / ···−− / ··−−− / −····  (ฐาน 6)</p>
+    <input type="password" id="password" placeholder="กรอกรหัสผ่าน" autocomplete="off" />
+    <button onclick="checkPassword()">ยืนยัน</button>
+    <p id="result"></p>
+  </div>
+
+<script>
+  function checkPassword() {
+    const correctPass = "3220345303010";
+    const inputField = document.getElementById("password");
+    const userInput = inputField.value.trim();
+    const result = document.getElementById("result");
+    
+    if (userInput === correctPass) {
+      result.textContent = "· ···− · −· / −· ··− −− −··· · ·−·";
+      result.style.color = "#4caf50";
+      inputField.classList.remove("error");
+    } else {
+      result.textContent = "ไม่ถูกต้อง";
+      result.style.color = "#f44336";
+      inputField.classList.add("error");
+    }
+  }
+</script>
+</body>
+</html>
